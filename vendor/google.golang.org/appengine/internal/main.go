@@ -8,9 +8,11 @@ package internal
 
 import (
 	"appengine_internal"
+	u "github.com/containerd/containerd/utils"
 )
 
 func Main() {
+	u.Info("enter main.sy 11")
 	MainPath = ""
 	appengine_internal.Main()
 }

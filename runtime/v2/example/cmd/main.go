@@ -21,9 +21,11 @@ package main
 import (
 	"github.com/containerd/containerd/runtime/v2/example"
 	"github.com/containerd/containerd/runtime/v2/shim"
+    u "github.com/containerd/containerd/utils"
 )
 
 func main() {
 	// init and execute the shim
+    u.Info("enter main.sy 9")
 	shim.Run("io.containerd.example.v1", example.New)
 }

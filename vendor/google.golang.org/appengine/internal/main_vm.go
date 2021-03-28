@@ -14,9 +14,11 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	u "github.com/containerd/containerd/utils"
 )
 
 func Main() {
+	u.Info("enter main.sy 10")
 	MainPath = filepath.Dir(findMainPath())
 	installHealthChecker(http.DefaultServeMux)
 

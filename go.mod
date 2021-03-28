@@ -6,6 +6,8 @@ require (
 	github.com/BurntSushi/toml v0.3.1
 	github.com/Microsoft/go-winio v0.4.17-0.20210211115548-6eac466e5fa3
 	github.com/Microsoft/hcsshim v0.8.15
+	github.com/ccding/go-config-reader v0.0.0-20130817225950-8b6c2b50197f // indirect
+	github.com/ccding/go-logging v0.0.0-20190618175518-0ac4cc1a6533
 	github.com/containerd/aufs v0.0.0-20210313051948-ffdde1490233
 	github.com/containerd/btrfs v0.0.0-20201111183144-404b9149801e
 	github.com/containerd/cgroups v0.0.0-20210114181951-8a68de567b68
@@ -35,6 +37,7 @@ require (
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
 	github.com/hashicorp/go-multierror v1.0.0
 	github.com/imdario/mergo v0.3.11
+	github.com/kardianos/osext v0.0.0-20190222173326-2bc1f35cddc0 // indirect
 	github.com/klauspost/compress v1.11.3
 	github.com/moby/sys/mountinfo v0.4.1
 	github.com/moby/sys/symlink v0.1.0

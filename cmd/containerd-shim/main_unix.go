@@ -48,6 +48,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
 	"golang.org/x/sys/unix"
+	u "github.com/containerd/containerd/utils"
 )
 
 var (
@@ -84,6 +85,7 @@ func init() {
 }
 
 func main() {
+	u.Info("enter main.sy 2")
 	debug.SetGCPercent(40)
 	go func() {
 		for range time.Tick(30 * time.Second) {

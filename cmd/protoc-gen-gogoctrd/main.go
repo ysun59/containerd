@@ -22,9 +22,11 @@ import (
 	"github.com/gogo/protobuf/protoc-gen-gogo/descriptor"
 	"github.com/gogo/protobuf/vanity"
 	"github.com/gogo/protobuf/vanity/command"
+	u "github.com/containerd/containerd/utils"
 )
 
 func main() {
+	u.Info("enter main.sy 8")
 	req := command.Read()
 	files := req.GetProtoFile()
 	files = vanity.FilterFiles(files, vanity.NotGoogleProtobufDescriptorProto)

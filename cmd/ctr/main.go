@@ -23,6 +23,7 @@ import (
 	"github.com/containerd/containerd/cmd/ctr/app"
 	"github.com/containerd/containerd/pkg/seed"
 	"github.com/urfave/cli"
+	u "github.com/containerd/containerd/utils"
 )
 
 var pluginCmds = []cli.Command{}
@@ -32,6 +33,7 @@ func init() {
 }
 
 func main() {
+	u.Info("enter main.sy 6")
 	app := app.New()
 	app.Commands = append(app.Commands, pluginCmds...)
 	if err := app.Run(os.Args); err != nil {

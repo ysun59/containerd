@@ -36,6 +36,7 @@ import (
 	"github.com/gogo/protobuf/proto"
 	"github.com/pkg/errors"
 	"github.com/sirupsen/logrus"
+	u "github.com/containerd/containerd/utils"
 )
 
 // Client for a shim server
@@ -146,6 +147,7 @@ func setLogger(ctx context.Context, id string) error {
 
 // Run initializes and runs a shim server
 func Run(id string, initFunc Init, opts ...BinaryOpts) {
+	defer u.Duration(u.Track("Run"))
 	var config Config
 	for _, o := range opts {
 		o(&config)
@@ -157,6 +159,7 @@ func Run(id string, initFunc Init, opts ...BinaryOpts) {
 }
 
 func run(id string, initFunc Init, config Config) error {
+	defer u.Duration(u.Track("run"))
 	parseFlags()
 	if versionFlag {
 		fmt.Printf("%s:\n", os.Args[0])
@@ -199,8 +202,11 @@ func run(id string, initFunc Init, config Config) error {
 	if err != nil {
 		return err
 	}
+	u.Info("before switch action")
+	u.Infof("action is: %s", action)
 	switch action {
 	case "delete":
+		u.Info("case  delete")
 		logger := logrus.WithFields(logrus.Fields{
 			"pid":       os.Getpid(),
 			"namespace": namespaceFlag,
@@ -219,6 +225,7 @@ func run(id string, initFunc Init, config Config) error {
 		}
 		return nil
 	case "start":
+		u.Info("case start")
 		address, err := service.StartShim(ctx, idFlag, containerdBinaryFlag, addressFlag, ttrpcAddress)
 		if err != nil {
 			return err
@@ -250,6 +257,7 @@ func run(id string, initFunc Init, config Config) error {
 
 // NewShimClient creates a new shim server client
 func NewShimClient(ctx context.Context, svc shimapi.TaskService, signals chan os.Signal) *Client {
+	defer u.Duration(u.Track("NewShimClient"))
 	s := &Client{
 		service: svc,
 		context: ctx,
@@ -260,6 +268,7 @@ func NewShimClient(ctx context.Context, svc shimapi.TaskService, signals chan os
 
 // Serve the shim server
 func (s *Client) Serve() error {
+	defer u.Duration(u.Track("Serve"))
 	dump := make(chan os.Signal, 32)
 	setupDumpStacks(dump)
 

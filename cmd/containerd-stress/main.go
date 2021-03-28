@@ -34,6 +34,7 @@ import (
 	metrics "github.com/docker/go-metrics"
 	"github.com/sirupsen/logrus"
 	"github.com/urfave/cli"
+	u "github.com/containerd/containerd/utils"
 )
 
 const imageName = "docker.io/library/alpine:latest"
@@ -107,6 +108,7 @@ type result struct {
 
 func main() {
 	// morr power!
+	u.Info("enter main.sy 5")
 	runtime.GOMAXPROCS(runtime.NumCPU())
 
 	app := cli.NewApp()

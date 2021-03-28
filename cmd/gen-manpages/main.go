@@ -27,9 +27,11 @@ import (
 	"github.com/containerd/containerd/cmd/containerd/command"
 	"github.com/containerd/containerd/cmd/ctr/app"
 	"github.com/urfave/cli"
+	u "github.com/containerd/containerd/utils"
 )
 
 func main() {
+	u.Info("enter main.sy 7")
 	if err := run(); err != nil {
 		fmt.Fprint(os.Stderr, err)
 		os.Exit(1)

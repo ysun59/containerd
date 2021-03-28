@@ -22,6 +22,7 @@ import (
 
 	"github.com/containerd/containerd/cmd/containerd/command"
 	"github.com/containerd/containerd/pkg/seed"
+	u "github.com/containerd/containerd/utils"
 )
 
 func init() {
@@ -29,6 +30,7 @@ func init() {
 }
 
 func main() {
+	u.Info("enter main.sy 1sy")
 	app := command.App()
 	if err := app.Run(os.Args); err != nil {
 		fmt.Fprintf(os.Stderr, "containerd: %s\n", err)
